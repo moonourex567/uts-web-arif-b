@@ -1,0 +1,57 @@
+:root{
+    --primary:#ff914d;
+    --bg:#d9c1c1;
+}
+
+body{
+    font-family: Arial;
+    background: var(--bg);
+    margin:0;
+    padding:0;
+}
+
+.navbar{
+    background: var(--primary);
+    padding:15px;
+}
+
+.navbar a{
+    color:rgb(143, 54, 54);
+    text-decoration:none;
+    margin-right:15px;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    margin-top:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table, th, td{
+    border:1px solid #ddd;
+}
+
+th, td{
+    padding:10px;
+}
+
+.btn{
+    background:var(--primary);
+    color:white;
+    padding:10px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+}
