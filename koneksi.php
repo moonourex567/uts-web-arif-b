@@ -1,14 +1,10 @@
 <?php
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "klinik_hewan";
-
-$conn = mysqli_connect($host, $user, $pass, $db);
-
-if(!$conn){
-    die("Koneksi gagal");
-}
+$conn = mysqli_connect(
+    "localhost",
+    "root",
+    "",
+    "klinik_hewan"
+);
 
 ?>
