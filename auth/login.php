@@ -10,27 +10,41 @@ if(isset($_POST['login'])){
     $email = mysqli_real_escape_string($conn,$_POST['email']);
     $password = $_POST['password'];
 
+    // Cek email
     $cek = mysqli_query($conn,"SELECT * FROM users WHERE email='$email'");
 
     if(mysqli_num_rows($cek) > 0){
 
         $data = mysqli_fetch_assoc($cek);
 
+        // Verifikasi password hash
         if(password_verify($password, $data['password'])){
 
             $_SESSION['login'] = true;
             $_SESSION['nama'] = $data['nama'];
+            $_SESSION['role'] = $data['role'];
 
-            header("Location: ../dashboard.php");
+            // Redirect berdasarkan role
+            if($data['role'] == 'admin'){
+                header("Location: ../dashboard.php");
+            } else {
+                header("Location: ../customer/index.php");
+            }
+
             exit;
 
-        }else{
-            echo "<script>alert('Password salah');</script>";
+        } else {
+
+            echo "<script>alert('Password salah!');</script>";
+
         }
 
-    }else{
-        echo "<script>alert('Email tidak ditemukan');</script>";
+    } else {
+
+        echo "<script>alert('Email tidak ditemukan!');</script>";
+
     }
+
 }
 ?>
 
@@ -40,7 +54,6 @@ if(isset($_POST['login'])){
     <title>Login Klinik Hewan</title>
 
     <style>
-
         *{
             margin:0;
             padding:0;
@@ -49,7 +62,7 @@ if(isset($_POST['login'])){
         }
 
         body{
-            background:linear-gradient(to right, #ffb88c, #de6262);
+            background:linear-gradient(to right,#ffb88c,#de6262);
             height:100vh;
             display:flex;
             justify-content:center;
@@ -97,6 +110,10 @@ if(isset($_POST['login'])){
             outline:none;
         }
 
+        .input-group input:focus{
+            border-color:#ff914d;
+        }
+
         .btn-login{
             width:100%;
             padding:12px;
@@ -105,15 +122,25 @@ if(isset($_POST['login'])){
             color:white;
             border-radius:10px;
             cursor:pointer;
+            font-size:16px;
+        }
+
+        .btn-login:hover{
+            background:#ff7b21;
         }
 
         .register{
             text-align:center;
             margin-top:20px;
+            font-size:14px;
         }
 
+        .register a{
+            color:#ff914d;
+            text-decoration:none;
+            font-weight:bold;
+        }
     </style>
-
 </head>
 <body>
 
