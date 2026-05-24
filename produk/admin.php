@@ -63,7 +63,6 @@ h1{
     padding:20px;
     border-radius:20px;
     color:white;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 .card h2{
@@ -85,10 +84,6 @@ h1{
     font-size:20px;
 }
 
-.aksi{
-    margin-top:15px;
-}
-
 .edit{
     background:#4CAF50;
     color:white;
@@ -103,6 +98,14 @@ h1{
     padding:8px 15px;
     border-radius:10px;
     text-decoration:none;
+}
+
+.aksi{
+    margin-top:15px;
+}
+
+.menu{
+    margin-top:40px;
 }
 
 </style>
@@ -159,6 +162,14 @@ Hapus
 </div>
 
 <?php } ?>
+
+</div>
+
+<div class="menu">
+
+<a href="order_admin.php" class="btn">
+🛒 Lihat Order Customer
+</a>
 
 </div>
 
